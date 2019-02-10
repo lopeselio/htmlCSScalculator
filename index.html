@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UI Simple Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+		*,html,body,p{
+			box-sizing:border-box;
+			font-family:'Noto Sans',sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		.author{
+			text_align:center;
+			margin: 10px 0;
+			font-size: 14px;
+			color: #223850;
+		}
+		.author a{
+			text-align: center;
+			color: #223850;	
+		}
+		#bg-body{
+			transition: all 0.8s ease-in;
+		}
+		.main-container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+			width:100%;
+		}
+		.calc-container{
+			display: grid;
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+		}
+		.dot{
+			grid-column: span 2;
+		}
+		.equal{
+			grid-row: span 2;
+		}
+		#buttons-container{
+			display: grid;
+			grid-template-columns: repeat(4,auto);
+			text-align: center;
+		}
+		#input{
+			width: 100%;
+			padding-right: 10px;
+			font-size: 10em;
+			text-align: right;
+			height: 2em;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			color: #fdfefe;
+			background: #223850;
+			transition: all 0.3s ease-in;
+   		}
+   		.btn{
+   			display: flex;
+   			justify-content: center;
+   			align-items: center;
+   			padding: 2rem;
+   			font-size: 1.5em;
+   			cursor: pointer;
+   			transition: all 0.3s ease-in;
+   		}
+   		.btn-num{
+   			background: #223850;
+   			color: #6885a7;
+   		}
+   		.btn-num:hover{
+   			background: #233b55;
+   		}
+   		.btn-operator{
+   			font-weight: bold;
+   			background: ##233b55;
+   			color: #fdfefe;
+   		}
+   		.btn-operator:hover{
+   			background: rgb(27,50,78)!important;
+   		}
+   		#color-change{
+   			position: fixed;
+   			border-radius: 50%;
+   			bottom: 0;
+   			right: 0;
+   			font-size: 1em;
+   			margin: 1em;
+   			transition: all 0.3s ease-in;
+   			background: #223850;
+   			color:#fdfefe;
+		}
+		#color-change:hover{
+			background-color: #FDFEFE !important;
+		color: #233B55 !important;
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+		}
+		.white-bg{
+			background: #fdfefe !important;
+		}
+		.white-text{
+			color: #fdfefe;
+		}
+		.blue-bg{
+			background: #223850;
+		}
+		.blue-text{
+			color: #223850;
+		}
+		/*queries*/
+		@media screen and (max-width: 601 px) {
+			#color-change{
+				position: relative;
+				width: 250px;
+				height: 250px;
+				margin: 0 auto 1em auto;
+
+
+			}
+		}
+
+
+
+
+
+	</style>
+
+</head>
+<body background="lighting-png-transparent-background-10.png">
+	<h1> <font face="verdana"> CALCULATOR WITHOUT FUNCTIONALITIES USING HTML/CSS</font></h1>
+	<body id="bg-body">
+		<!--Author-->
+		<p class="author">Made by <a target="_blank" href="#"> ELIO JORDAN LOPES </a></p>
+		<div class="main-container">
+			<div class="calc-container">
+				<div id="input" class="">
+				</div>
+				<div id="buttons-container">
+					<div class="btn btn-opertaor" onclick="clearInput()"><i class="fa fa-trash-alt"></i></div>
+					<div class="btn btn-opertaor" onclick="eraseNum()"><i class="fa fa-backspace"></i></div>
+					<div class="btn btn-opertaor" onclick="insertInput("/")"><i class="fas fa-divide"></i></div>
+					<div class="btn btn-opertaor" onclick="insertNum('*')"><i class="fas fa-times"></i></div>
+
+
+
+					<div class="btn btn-opertaor" onclick="insertNum("7")">7</div>
+					<div class="btn btn-opertaor" onclick="insertNum("8")">8</div>
+					<div class="btn btn-opertaor" onclick="insertNum("9")">9</div>
+					<div class="btn btn-opertaor" onclick="insertNum('-')"><i class="fas fa-minus"></i></div>
+
+
+
+					<div class="btn btn-opertaor" onclick="insertNum("4")">4</div>
+					<div class="btn btn-opertaor" onclick="insertNum("5")">5</div>
+					<div class="btn btn-opertaor" onclick="insertNum("6")">6</div>
+					<div class="btn btn-opertaor" onclick="insertNum('+')"><i class="fas fa-plus"></i></div>
+
+
+
+					<div class="btn btn-opertaor" onclick="insertNum("1")">1</div>
+					<div class="btn btn-opertaor" onclick="insertNum("2")">2</div>
+					<div class="btn btn-opertaor" onclick="insertNum("3")">3</div>
+					<div class="btn btn-opertaor equal" onclick="equalTo()"><i class="fas fa-equals"></i></div>
+					<div class="btn btn-opertaor" onclick="insertNum("0")">0</div>
+					<div class="btn btn-opertaor" onclick="insertNum('.')">.</div>
+				</div>
+			</div>
+		</div>
+		<div id="color-change" class="btn"><i class="fas fa-palette"></i></div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
